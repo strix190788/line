@@ -8,11 +8,8 @@ void setup() {
   bot.reverse();
   bot.reverseRightMotor();
   bot.waitButtons();
-  while (leftSens.mapRead() < 50 or rightSens.mapRead() < 50) lineMove();
-  delay(500);
-  while (leftSens.mapRead() < 50 or rightSens.mapRead() < 50) lineMove();
+  while (leftSens.mapRead() < 50 or rightSens.mapRead() < 50) lineMove(80, 1.2);
   bot.stop();
 }
 void loop() {
-  
 }
