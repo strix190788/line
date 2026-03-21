@@ -18,3 +18,8 @@ void pMove(int error, int pwr, float kp){
   int Psost = error * kp;
   bot.move(pwr - Psost, pwr + Psost);
 }
+
+void turnLeft(int pwr, float kp, int prd){
+  long currentMillis = millis();
+  while (millis() - currentMillis < prd) pMove(leftSens.mapRead() - 40, pwr, kp);
+}
