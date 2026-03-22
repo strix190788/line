@@ -1,7 +1,7 @@
 void lineMove(int pwr, float kp) {
   int error = leftSens.mapRead() - rightSens.mapRead();
   int Psost = error * kp;
-  bot.move(1.05 * pwr - Psost, pwr + Psost);
+  bot.move(pwr - Psost, pwr + Psost);
 }
 
 void lineMove(int pwr, float kp, int prd) {
@@ -22,4 +22,9 @@ void pMove(int error, int pwr, float kp){
 void turnLeft(int pwr, float kp, int prd){
   long currentMillis = millis();
   while (millis() - currentMillis < prd) pMove(leftSens.mapRead() - 40, pwr, kp);
+}
+
+void turnRight(int pwr, float kp, int prd){
+  long currentMillis = millis();
+  while (millis() - currentMillis < prd) pMove(40 - rightSens.mapRead(), pwr, kp);
 }
