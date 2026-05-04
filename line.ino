@@ -3,13 +3,24 @@ KPMIS bot;
 #include <analogSensor.h>
 analogSensor leftSens(A0, 2, 3);
 analogSensor rightSens(A1, 4, 5);
+analogSensor pot(A10);
+#include <Ultrasonic.h>
+Ultrasonic sonic(7, 6);  // (trig, echo)
+//const int rightSensBlack = 50;
+//const int lensSensBlack = 50;
+int distance;
 void setup() {
   bot.initMotors();
-  bot.reverse();
-  bot.reverseRightMotor();
   bot.waitButtons();
-  while (leftSens.mapRead() < 50 or rightSens.mapRead() < 50) lineMove(80, 1.2);
+
   bot.stop();
+
+
+
+  // find
+  
 }
+
+
 void loop() {
 }
