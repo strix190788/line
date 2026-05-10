@@ -36,15 +36,31 @@ void lineMoveToTower(int dist, int pwr, float kp) {
     lineMove(pwr, kp, 6);
   }
 }
+
+
 void findTower(int dist) {
   bot.move(80, -80);
   int distance = dist + 10;
   while (distance > dist or distance < 10) {
     distance = sonic.read();
-    delay(50);
+    delay(10);
   }
   bot.stop();
 }
+
+
+void moveToTower(int distToStop, int distToFind){
+  int distance = distToStop + 10;
+  while (distance > distToStop or distance < 10) {
+    distance = sonic.read();
+    if (distance > distToFind) {
+      findTower(distToFind);
+    }
+    else bot.move(80, 80);
+    delay(10);
+  }
+}
+
 
 void aroundTheTower() {
 }
